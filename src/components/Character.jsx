@@ -6,5 +6,16 @@ export default function Character() {
   const[isLoading, setIsLoading] = useState(true);
   const { id } = useParams();
 
+  useEffect(() => {
+    const fetchCharacter = async () => {
+      const res = await fetch(`https://rickandmortyapi.com/api/character/${id}`);
+      const data = await res.json();
+      
+      setCharacter(data);
+      setIsLoading(false);
+    }
+    fetchCharacter();
+  }, [])
+
   
 }
