@@ -19,13 +19,17 @@ export default function Character() {
 
   return(
     <>
-    isLoading ? <p>Loading...</p>
+    {
+      isLoading ? <p>Loading...</p>
       : (
         <>
           <h2>{character.name}</h2>
           <img src={character.image}></img>
+          <p>{character.status}</p>
+          <span>{character.species}</span>
         </>
       )
+    }
     </>
   )
 }
