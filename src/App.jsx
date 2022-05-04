@@ -1,3 +1,16 @@
+import Characters from './views/Characters';
+import Character from './components/Character';
+import { Switch, Route } from 'react-router-dom';
+
 export default function App() {
-  return <h1>Hello World</h1>;
+  return (
+    <Switch>
+      <Route path="/characters/:id">
+        <Character />
+      </Route>
+      <Route path="/">
+        <Characters />
+      </Route>
+    </Switch>
+  );
 }

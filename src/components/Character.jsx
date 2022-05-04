@@ -24,7 +24,7 @@ export default function Character() {
       : (
         <>
           <h2>{character.name}</h2>
-          <img src={character.image}></img>
+          <img src={character.image} alt={`Image of ${character.name}`}></img>
           <p>{character.status}</p>
           <span>{character.species}</span>
         </>
