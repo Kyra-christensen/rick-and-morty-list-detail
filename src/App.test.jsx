@@ -13,6 +13,15 @@ describe('App', () => {
         <App/>
       </MemoryRouter>
     );
-    
+
+    await waitForElementToBeRemoved(screen.getByText('Loading...'));
+
+    const link = await screen.findByText('Morty Smith');
+
+    userEvent.click(link);
+
+    const mortyImg = await screen.findByAltText('Image of Morty Smith');
+
+    expect(mortyImg).toBeInTheDocument();
   })
 })
