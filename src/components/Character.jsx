@@ -17,5 +17,15 @@ export default function Character() {
     fetchCharacter();
   }, [])
 
-  
+  return(
+    <>
+    isLoading ? <p>Loading...</p>
+      : (
+        <>
+          <h2>{character.name}</h2>
+          <img src={character.image}></img>
+        </>
+      )
+    </>
+  )
 }
