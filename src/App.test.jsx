@@ -7,7 +7,7 @@ describe('App', () => {
   it('should render a list of characters and a detail page when a character is clicked on', async () => {
     render(
       <MemoryRouter
-        initialEntries={['/', '/characters/2']}
+        initialEntries={['/characters/2']}
         initialIndex={0}
       >
         <App/>
@@ -23,5 +23,22 @@ describe('App', () => {
     const mortyImg = await screen.findByAltText('Image of Morty Smith');
 
     expect(mortyImg).toBeInTheDocument();
+  });
+
+  it('should test the behavior of the dropdown', async () => {
+    render(
+      <MemoryRouter>
+        <App/>
+      </MemoryRouter>
+    )
+
+    await waitForElementToBeRemoved(screen.getByText('Loading...'));
+
+    const select = screen.getByRole('combobox', {
+      name: /character status:/i
+    });
+    userEvent.selectOptions(select, 'Dead');
+
+    await screen.findByText('Alan Rails');
   })
 })
